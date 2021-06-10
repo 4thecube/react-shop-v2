@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
 import { selectDirectorySection } from "../../redux/directory/directory.selectors";
-import { sectionsData } from "./directory.data";
 import MenuItem from "../menu-item/MenuItem";
 
 import "./Directory.scss";

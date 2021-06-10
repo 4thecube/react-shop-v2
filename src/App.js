@@ -11,9 +11,10 @@ import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/user/user.actions";
 import { selectCurrentUser } from "./redux/user/user.selector";
 import CheckoutPage from "./pages/checkout/CheckoutPage";
+import AboutPage from "./pages/about/AboutPage";
 
 function App({ setCurrentUser, currentUser }) {
-  const unsubscribeFromAuth = null;
+  const unsubscribeFromAuth = () => null;
   useEffect(() => {
     auth.onAuthStateChanged(async (user) => {
       if (user) {
@@ -31,7 +32,7 @@ function App({ setCurrentUser, currentUser }) {
     return () => {
       unsubscribeFromAuth();
     };
-  }, []);
+  });
 
   return (
     <div>
@@ -43,6 +44,7 @@ function App({ setCurrentUser, currentUser }) {
           path="/signin"
           render={() => (currentUser ? <Redirect to="/" /> : <LoginPage />)}
         />
+        <Route path="/about" component={AboutPage} />
         <Route exact path="/checkout" component={CheckoutPage} />
       </Switch>
     </div>
