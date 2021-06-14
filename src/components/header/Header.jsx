@@ -9,8 +9,9 @@ import CartIcon from "../cart-icon/CartIcon";
 import CartDropdown from "../cart-dropdown/CartDropdown";
 import { selectCartHidden } from "../../redux/cart/cart.selectors";
 import { selectCurrentUser } from "../../redux/user/user.selector";
+import { signOutStart } from "../../redux/user/user.actions";
 
-const Header = ({ currentUser, isHidden }) => {
+const Header = ({ currentUser, isHidden, signOutStart }) => {
   return (
     <div className="header">
       <Link to="/">
@@ -24,7 +25,7 @@ const Header = ({ currentUser, isHidden }) => {
           ABOUT
         </Link>
         {currentUser ? (
-          <div className="option" onClick={() => auth.signOut()}>
+          <div className="option" onClick={signOutStart}>
             SIGN OUT
           </div>
         ) : (
@@ -45,4 +46,8 @@ const mapStateToProps = (state) =>
     isHidden: selectCartHidden,
   });
 
-export default connect(mapStateToProps)(Header);
+const mapDispatchToProps = (dispatch) => ({
+  signOutStart: () => dispatch(signOutStart()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
