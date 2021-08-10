@@ -18,19 +18,6 @@ import AboutPage from "./pages/about/AboutPage";
 
 function App({ currentUser, checkUserSession }) {
   useEffect(() => {
-    // auth.onAuthStateChanged(async (user) => {
-    //   if (user) {
-    //     const userRef = await createUserProfileDocument(user);
-    //     const unsubscribeFromAuth = userRef.onSnapshot((snapShot) => {
-    //       setCurrentUser({
-    //         id: snapShot.id,
-    //         ...snapShot.data(),
-    //       });
-    //       return unsubscribeFromAuth;
-    //     });
-    //   }
-    //   setCurrentUser(user);
-    // });
     checkUserSession();
   }, []);
 

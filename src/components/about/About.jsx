@@ -23,7 +23,7 @@ const About = () => {
             <li>CSS in JS with styled-components</li>
             <li>Redux, Redux Thunk, Redux Saga</li>
             <li>React Router</li>
-            <li>...and other shit that I skipped</li>
+            <li>...and other shit that I've skipped</li>
           </ul>
         </div>
       </div>
