@@ -1,19 +1,25 @@
 import React, { useState } from "react";
-
+import { connect } from "react-redux";
+import {
+  emailSignInStart,
+  checkUserSession,
+} from "../../redux/user/user.actions";
 import { auth, createUserProfileDocument } from "../../firebase.utils";
-
+import { signUpStart } from "../../redux/user/user.actions";
 import FormInput from "../form-input/FormInput";
 import CustomButton from "../custom-button/CustomButton";
 
 import "./SignUp.scss";
 
-const SignUp = () => {
+const SignUp = ({ isCurrentUser, signUpStart }) => {
   const [currentUser, setCurrentUser] = useState({
     displayName: "",
     email: "",
     password: "",
     confirmPassword: "",
   });
+
+  const { displayName, email, password, confirmPassword } = currentUser;
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -27,36 +33,16 @@ const SignUp = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    console.log("shitt");
-    const { displayName, email, password, confirmPassword } = currentUser;
     console.log(email, password);
     if (password !== confirmPassword) {
       alert("Passwords don't match");
       return;
     }
 
-    try {
-      const { user } = await auth.createUserWithEmailAndPassword(
-        email,
-        password
-      );
-
-      createUserProfileDocument(user, { displayName });
-
-      console.log("Success");
-    } catch (err) {
-      console.log("There is error" + err);
-    }
-
-    setCurrentUser({
-      displayName: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
-    });
+    signUpStart({ displayName, email, password });
   };
 
-  const { displayName, email, password, confirmPassword } = currentUser;
+  // const { displayName, email, password, confirmPassword } = currentUser;
   return (
     <div className="sign-up">
       <h2 className="title">I do not have an account</h2>
@@ -100,4 +86,8 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+const mapDispatchToProps = (dispatch) => ({
+  signUpStart: (userData) => dispatch(signUpStart(userData)),
+});
+
+export default connect(null, mapDispatchToProps)(SignUp);

@@ -51,3 +51,32 @@
     }
   }
 }
+
+@media screen and (max-width: 800px) {
+  .collection-item {
+    width: 45vw;
+    margin-bottom: 30px;
+    &:hover {
+      .image {
+        opacity: unset;
+      }
+      button {
+        opacity: unset;
+      }
+      .custom-button {
+        display: block;
+        opacity: 0.9;
+        min-width: unset;
+        padding: 0 10px;
+      }
+    }
+    .collection-footer {
+      display: flex;
+      justify-content: space-evenly;
+
+      .price {
+        width: 30%;
+      }
+    }
+  }
+}

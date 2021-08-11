@@ -21,7 +21,6 @@ const SignIn = ({ googleSignIn, emailSignIn }) => {
     event.preventDefault();
 
     const { email, password } = userInfo;
-    console.log(email, password);
     emailSignIn(email, password);
     // try {
     //   await auth.signInWithEmailAndPassword(email, password);

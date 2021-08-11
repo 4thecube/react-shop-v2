@@ -12,7 +12,6 @@ import {
 
 export function* fetchCollectionsAsync() {
   try {
-    yield console.log("I am fired");
     const collectionRef = firestore.collection("collections");
     const snapshot = yield collectionRef.get();
     // first arg - function, sec - params to function

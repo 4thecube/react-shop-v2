@@ -47,3 +47,44 @@
     color: red;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .checkout-page {
+    width: 90%;
+
+    .total {
+      button {
+        text-align: center;
+        height: 10vh;
+        width: 35vw;
+
+        span {
+          width: 100% !important;
+          height: 100% !important;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+    }
+
+    .checkout-header {
+      .header-block {
+        width: 22%;
+        font-size: 14px;
+        &:last-child {
+          width: 12%;
+        }
+        &:first-child {
+          width: 16%;
+        }
+        &:nth-child(2) {
+          width: 25%;
+        }
+        &:nth-child(4) {
+          width: 12%;
+        }
+      }
+    }
+  }
+}
